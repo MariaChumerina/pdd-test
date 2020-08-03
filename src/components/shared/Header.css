@@ -1,0 +1,17 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #161B46;
+    text-transform: uppercase;
+    height: 12vh;
+    min-height: 50px;
+    box-shadow: 0 4px 13px rgba(125, 125, 125, 0.25);
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.title {
+    vertical-align: center;
+    padding-left: 2.5%;
+}

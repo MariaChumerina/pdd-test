@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
+import Main from './components/Main/Main.jsx';
+import Header from './components/shared/Header.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        test pdd
-      </header>
-    </div>
+    <>
+      <Header />
+      <Main />
+    </>
   );
 }
 
