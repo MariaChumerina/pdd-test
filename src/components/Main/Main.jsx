@@ -1,4 +1,5 @@
 import React from 'react';
+import roadImg from './media/road.svg'
 import './Main.css';
 
 export default function Main() {
@@ -13,6 +14,9 @@ export default function Main() {
       <button type="submit">
         Поехали!
       </button>
+      <div className="margin-top-30">
+        <img src={roadImg} alt="дорога"/>
+      </div>
     </div>
   );
 }
