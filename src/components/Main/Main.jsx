@@ -19,7 +19,7 @@ export default function Main() {
         <p>
           Тест содержит 20 вопросов. Тест считается пройденным, если допущено не более 2 ошибок.
         </p>
-        <button type="button" onClick={handleClick}>
+        <button className="main-button-color" type="button" onClick={handleClick}>
           Поехали!
         </button>
         <div className="margin-top-30">
