@@ -26,30 +26,30 @@ export default class Test extends React.Component {
     const { value } = this.state;
 
     return (
-        <div className="container margin-top-50">
-          <div className="margin-top-30">
-            <img src={testImg} alt="знак STOP" />
-          </div>
-          <input
-              type="text"
-              className="form-field margin-top-30"
-              pattern="[A-Za-zА-Яа-яЁё]{1,13}"
-              placeholder="Введите имя"
-              value={value}
-              onChange={this.handleChange}
-              required
-          />
-          <div className="margin-top-15">
-            <button type="submit" onClick={this.handleSubmit}>
-              Начать тест
-            </button>
-          </div>
-          <div className="margin-top-50">
-            <Link to='/' >
-              На главную
-            </Link>
-          </div>
+      <div className="container margin-top-50">
+        <div className="margin-top-30">
+          <img src={testImg} alt="знак STOP" />
         </div>
+        <input
+            type="text"
+            className="form-field margin-top-30"
+            pattern="[A-Za-zА-Яа-яЁё]{1,13}"
+            placeholder="Введите имя"
+            value={value}
+            onChange={this.handleChange}
+            required
+        />
+        <div className="margin-top-15">
+          <button type="submit" onClick={this.handleSubmit}>
+            Начать тест
+          </button>
+        </div>
+        <div className="margin-top-50">
+          <Link to='/' >
+            На главную
+          </Link>
+        </div>
+      </div>
     );
   }
 }

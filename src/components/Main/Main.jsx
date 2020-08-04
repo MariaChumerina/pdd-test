@@ -9,7 +9,7 @@ export default function Main() {
     setSubmit(true);
   }
 
-  return(
+  return (
     isSubmitted
       ? <Redirect to="/test" /> : (
       <div className="container margin-top-50">
