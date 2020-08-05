@@ -5,7 +5,7 @@ import './FormInputName.css';
 
 export default function FormInputName({onSubmit}) {
   const [ value, setValue ] = useState('');
-  const handleSubmit = React.useCallback(() => onSubmit(value), [onSubmit]);
+  const handleSubmit = React.useCallback(() => onSubmit(value), [onSubmit, value]);
 
   const handleChange = (e) => {
     const { value } = e.target;
