@@ -29,7 +29,7 @@ export default class Quiz extends React.Component {
   chooseAnswer = (answer) => {
     const { indexOfTicket } = this.state;
     this.setState({ indexOfTicket: indexOfTicket + 1 });
-    this.checkAnswer(Number(answer) + 1, indexOfTicket);
+    this.checkAnswer(answer + 1, indexOfTicket);
   }
 
   checkAnswer = (answerNumber, indexOfTicket) => {
@@ -38,6 +38,11 @@ export default class Quiz extends React.Component {
     if (Number(trueAnswer) !== answerNumber) {
       this.setState({ falseAnswers: falseAnswers.concat(indexOfTicket)})
     }
+  }
+
+  startTest = () => {
+    const tickets = getTickets(pddData);
+    this.setState({ tickets, indexOfTicket: 0, falseAnswers: [] });
   }
 
   renderQuiz = () => {
@@ -49,11 +54,11 @@ export default class Quiz extends React.Component {
               <h2>
                 {tickets[indexOfTicket].title}
               </h2>
-              <ul className="list-group">
+              <div>
                 <Answers answers={tickets[indexOfTicket].answers} chooseAnswer={this.chooseAnswer} />
-              </ul>
+              </div>
             </div>
-        ) : <Result falseAnswers={falseAnswers} />
+        ) : <Result falseAnswers={falseAnswers} startTest={this.startTest} />
     );
   }
 

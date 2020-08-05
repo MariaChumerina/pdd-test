@@ -12,10 +12,22 @@
     margin-top: 10px;
     min-height: 50px;
 }
-.list-group-item:hover {
-    background-color: #F8F8F8;
+.item-hover:hover {
+    background-color: lightgrey;
     cursor: pointer;
+}
+.item-selected {
+    background-color: lightgrey;
 }
 .list-group-item:active {
     background-color: lightgrey;
+}
+.answers-button-block {
+    position: relative;
+}
+.error-text {
+    position: absolute;
+    bottom: 40px;
+    color: red;
+    font-size: 14px;
 }
