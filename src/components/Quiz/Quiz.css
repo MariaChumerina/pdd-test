@@ -31,3 +31,12 @@
     color: red;
     font-size: 14px;
 }
+.button-hint {
+    background-color: darkseagreen;
+}
+.button-hint-margin {
+    margin-left: 10px;
+}
+.hint-hide {
+    display: none;
+}

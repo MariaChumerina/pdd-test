@@ -57,15 +57,19 @@ export default class Quiz extends React.Component {
     return (
       indexOfTicket < 19
         ? (
-            <div className="container margin-top-50">
-              {this.getImage()}
-              <h2>
-                {tickets[indexOfTicket].title}
-              </h2>
-              <div>
-                <Answers answers={tickets[indexOfTicket].answers} chooseAnswer={this.chooseAnswer} />
-              </div>
+          <div className="container margin-top-50">
+            {this.getImage()}
+            <h2>
+              {tickets[indexOfTicket].title}
+            </h2>
+            <div>
+              <Answers
+                answers={tickets[indexOfTicket].answers}
+                chooseAnswer={this.chooseAnswer}
+                hint={tickets[indexOfTicket].hint}
+              />
             </div>
+          </div>
         ) : <Result falseAnswers={falseAnswers} startTest={this.startTest} />
     );
   }
