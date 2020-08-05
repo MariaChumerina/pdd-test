@@ -40,6 +40,13 @@ export default class Quiz extends React.Component {
     }
   }
 
+  getImage = () => {
+    const { tickets, indexOfTicket } = this.state;
+    const url = require(`../../pddData/${tickets[indexOfTicket].image}`);
+    return !tickets[indexOfTicket].image.includes('no_image.jpg')
+        ? <img src={url} alt="изображение ситуации" /> : '';
+  }
+
   startTest = () => {
     const tickets = getTickets(pddData);
     this.setState({ tickets, indexOfTicket: 0, falseAnswers: [] });
@@ -51,6 +58,7 @@ export default class Quiz extends React.Component {
       indexOfTicket < 19
         ? (
             <div className="container margin-top-50">
+              {this.getImage()}
               <h2>
                 {tickets[indexOfTicket].title}
               </h2>
