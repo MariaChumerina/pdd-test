@@ -18,23 +18,23 @@ export default function NoPassTest({ falseAnswers, tickets }) {
       }
 
       return (
-          <div className="result-answers-block margin-top-30">
+          <div className="result-answers-block margin-top-30" key={answer.ticketNumber}>
             {getImage()}
             <h3>
               {ticket.title}
             </h3>
-            <p>
+            <div className="margin-top-15">
               Вы ответили:
-              <div className="wrong-answer">
+              <p className="wrong-answer">
                 {answer.answer}
-              </div>
-            </p>
-            <p>
+              </p>
+            </div>
+            <div className="margin-top-15">
               Правильный ответ:
-              <div className="right-answer">
+              <p className="right-answer">
                 {answer.correct}
-              </div>
-            </p>
+              </p>
+            </div>
           </div>
       );
     })
