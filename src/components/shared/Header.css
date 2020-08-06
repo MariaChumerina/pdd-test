@@ -23,3 +23,11 @@ header {
 .header-link:hover {
     opacity: 0.6;
 }
+@media screen and (max-width: 767px){
+    .title {
+        font-size: 15px;
+    }
+    .header-link {
+        font-size: 15px;
+    }
+}

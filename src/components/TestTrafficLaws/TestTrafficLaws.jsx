@@ -17,6 +17,7 @@ export default class TestTrafficLaws extends React.Component {
 
   componentDidMount() {
     const tickets = getTickets(TestTrafficLawsData);
+    console.log(tickets);
     this.setState({ tickets });
   }
 

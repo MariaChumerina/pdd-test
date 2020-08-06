@@ -27,7 +27,7 @@
 }
 .result-errors-block {
     position: absolute;
-    top: 80px;
+    top: 350px;
     width: 80vw;
 }
 @media screen and (max-width: 767px){
@@ -42,6 +42,6 @@
         left: 0;
     }
     .result-errors-block {
-        top: 130px;
+        top: 280px;
     }
 }
