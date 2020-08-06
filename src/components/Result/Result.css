@@ -1,3 +1,6 @@
+.result-block {
+    position: relative;
+}
 .wrong-answer {
     margin-top: 5px;
     color: red;
@@ -11,4 +14,25 @@
     border: 1px solid #DAE1D2;
     border-radius: 4px;
     padding: 10px;
+}
+.result-button {
+    margin: 0 0;
+    width: 180px;
+}
+.button-result-error {
+    width: 180px;
+    position: absolute;
+    bottom: -50px;
+}
+.result-errors-block {
+    position: absolute;
+    top: 130px;
+}
+@media screen and (max-width: 767px){
+    .result-errors-block {
+        width: 98%;
+    }
+    img {
+        width: 90%;
+    }
 }

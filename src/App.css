@@ -40,6 +40,9 @@ button {
 button:hover {
   opacity: 0.8;
 }
+.button-green {
+  background-color: mediumseagreen;
+}
 @media screen and (max-width: 767px) {
   h1 {
     font-size: 18px;

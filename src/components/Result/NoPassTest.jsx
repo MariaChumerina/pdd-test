@@ -1,7 +1,12 @@
 import { sessionSaver } from '../../SessionSaver.js';
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function NoPassTest({ falseAnswers, tickets }) {
+  const [isVisibleErrors, setVisibilityErrors ] = useState(false);
+
+  const handleClick = () => {
+    setVisibilityErrors(!isVisibleErrors);
+  }
 
   const renderFalseAnswers = () => {
     return falseAnswers.map((answer) => {
@@ -43,10 +48,14 @@ export default function NoPassTest({ falseAnswers, tickets }) {
         <p>
           Количество ошибок: {falseAnswers.length}
         </p>
-        <div>
-          <h2>Ошибки</h2>
-          {renderFalseAnswers()}
-        </div>
+        <button className="button-result-error button-green" onClick={handleClick}>
+          Показать ошибки
+        </button>
+        {isVisibleErrors ? (
+          <div className="result-errors-block margin-top-30">
+            {renderFalseAnswers()}
+          </div>
+        ) : ''}
       </>
   );
 }

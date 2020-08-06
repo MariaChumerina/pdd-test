@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import roadImg from './media/road.svg'
-import './Main.css';
 
 export default function Main() {
   const [ isSubmitted, setSubmit ] = useState(false);
@@ -19,7 +18,7 @@ export default function Main() {
         <p>
           Тест содержит 20 вопросов. Тест считается пройденным, если допущено не более 2 ошибок.
         </p>
-        <button className="main-button-color" type="button" onClick={handleClick}>
+        <button className="button-green" type="button" onClick={handleClick}>
           Поехали!
         </button>
         <div className="margin-top-30">
