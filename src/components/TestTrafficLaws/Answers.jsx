@@ -60,7 +60,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
               Выбрать
             </button>
             <button
-              className="button-hint button-hint-margin"
+              className="button-green button-hint-margin"
               type="button"
               onClick={handleClickHint}
             >

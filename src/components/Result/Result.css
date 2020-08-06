@@ -22,11 +22,13 @@
 .button-result-error {
     width: 180px;
     position: absolute;
-    bottom: -50px;
+    bottom: 0;
+    left: 200px;
 }
 .result-errors-block {
     position: absolute;
-    top: 130px;
+    top: 80px;
+    width: 80vw;
 }
 @media screen and (max-width: 767px){
     .result-errors-block {
@@ -34,5 +36,12 @@
     }
     img {
         width: 90%;
+    }
+    .button-result-error {
+        bottom: -50px;
+        left: 0;
+    }
+    .result-errors-block {
+        top: 130px;
     }
 }
