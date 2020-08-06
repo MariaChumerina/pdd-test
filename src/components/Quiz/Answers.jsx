@@ -23,7 +23,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
 
   const handleClickHint = () => {
     setVisibilityHint(!isHiddenHint);
-    hintElRef.current.scrollIntoView();
+    hintElRef.current.scrollIntoView({behavior: "smooth"});
   }
 
   const renderAnswers = () => answers.map((answer, i) => {
@@ -50,12 +50,12 @@ export default function Answers({ answers, chooseAnswer, hint }) {
       <ul className="list-group">
         {renderAnswers()}
         <div className="answers-button-block">
-          {error ? (
-              <div className="margin-top-15 error-text">
-                {error}
-              </div>
-          ) : ''}
           <div className="margin-top-30" >
+            {error ? (
+                <div className="margin-top-15 error-text">
+                  {error}
+                </div>
+            ) : ''}
             <button type="submit" onClick={handleSubmit}>
               Выбрать
             </button>

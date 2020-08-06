@@ -3,9 +3,9 @@
     padding-left: 0;
     color: #444;
     line-height: 25px;
+    width: 70vw;
 }
 .list-group-item {
-    width: 70vw;
     list-style-type: none;
     padding-left: 14px;
     border: 1px solid lightgrey;
@@ -28,7 +28,7 @@
 }
 .error-text {
     position: absolute;
-    bottom: 40px;
+    top: -45px;
     color: red;
     font-size: 14px;
 }
@@ -46,4 +46,15 @@
     background-color: #EDF1DD;
     border-radius: 4px;
     padding: 10px;
+}
+@media screen and (max-width: 767px) {
+    img {
+        width: 90vw;
+    }
+    .list-group {
+        width: 90vw;
+    }
+    .hint-block {
+        width: 85vw;
+    }
 }
