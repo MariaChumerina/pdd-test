@@ -5,6 +5,7 @@
     line-height: 25px;
 }
 .list-group-item {
+    width: 70vw;
     list-style-type: none;
     padding-left: 14px;
     border: 1px solid lightgrey;
@@ -38,5 +39,11 @@
     margin-left: 10px;
 }
 .hint-hide {
-    display: none;
+    visibility: hidden;
+}
+.hint-block {
+    width: 70vw;
+    background-color: #EDF1DD;
+    border-radius: 4px;
+    padding: 10px;
 }

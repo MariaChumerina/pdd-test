@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 
 export default function Answers({ answers, chooseAnswer, hint }) {
   const [ id, setId ] = useState(-1);
   const [error, setError] = useState('');
   const [isHiddenHint, setVisibilityHint] = useState(true);
+  const hintElRef = useRef(null);
 
   const handleSubmit = React.useCallback(() => {
     if (id !== -1) {
@@ -22,6 +23,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
 
   const handleClickHint = () => {
     setVisibilityHint(!isHiddenHint);
+    hintElRef.current.scrollIntoView();
   }
 
   const renderAnswers = () => answers.map((answer, i) => {
@@ -65,12 +67,15 @@ export default function Answers({ answers, chooseAnswer, hint }) {
               Подсказка
             </button>
           </div>
-          <div className={classNames({
-                'hint-hide': isHiddenHint,
-                'margin-top-15': true,
-                })}
+          <div
+            className={classNames({
+              'hint-hide': isHiddenHint,
+              'margin-top-15': true,
+              'hint-block': true,
+              })}
+             ref={hintElRef}
           >
-            {hint}
+              {hint}
           </div>
         </div>
       </ul>
