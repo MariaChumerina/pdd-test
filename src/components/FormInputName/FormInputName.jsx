@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import testImg from './media/pdd-test-img.svg';
 import './FormInputName.css';
 
@@ -30,11 +29,6 @@ export default function FormInputName({onSubmit}) {
         <button type="submit" onClick={handleSubmit}>
           Подтвердить
         </button>
-      </div>
-      <div className="margin-top-50">
-        <Link to='/' >
-          На главную
-        </Link>
       </div>
     </div>
   );
