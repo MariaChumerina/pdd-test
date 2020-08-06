@@ -1,13 +1,13 @@
 import React from 'react';
 import FormInputName from '../FormInputName/FormInputName.jsx';
-import pddData from '../../pddData/questions.json';
+import TestTrafficLawsData from '../../TestTrafficLawsData/questions.json';
 import { sessionSaver } from '../../SessionSaver.js';
 import getTickets from '../../utils/getTickets.js';
 import Answers from './Answers.jsx';
-import './Quiz.css';
-import Result from './Result.jsx';
+import './TestTrafficLaws.css';
+import Result from '../Result/Result.jsx';
 
-export default class Quiz extends React.Component {
+export default class TestTrafficLaws extends React.Component {
   state = {
     isSubmitted: false,
     tickets: [],
@@ -16,7 +16,8 @@ export default class Quiz extends React.Component {
   }
 
   componentDidMount() {
-    const tickets = getTickets(pddData);
+    const tickets = getTickets(TestTrafficLawsData);
+    console.log(tickets);
     this.setState({ tickets });
   }
 
@@ -34,28 +35,32 @@ export default class Quiz extends React.Component {
 
   checkAnswer = (answerNumber, indexOfTicket) => {
     const { tickets, falseAnswers } = this.state;
-    const trueAnswer = tickets[indexOfTicket].correct;
-    if (Number(trueAnswer) !== answerNumber) {
-      this.setState({ falseAnswers: falseAnswers.concat(indexOfTicket)})
+    const trueAnswer = Number(tickets[indexOfTicket].correct);
+    if (trueAnswer !== answerNumber) {
+      this.setState({ falseAnswers: [...falseAnswers, {
+        ticketNumber: indexOfTicket,
+        answer: tickets[indexOfTicket].answers[answerNumber - 1],
+        correct: tickets[indexOfTicket].answers[trueAnswer - 1],
+      }] });
     }
   }
 
   getImage = () => {
     const { tickets, indexOfTicket } = this.state;
-    const url = require(`../../pddData/${tickets[indexOfTicket].image}`);
+    const url = require(`../../TestTrafficLawsData/${tickets[indexOfTicket].image}`);
     return !tickets[indexOfTicket].image.includes('no_image.jpg')
         ? <img src={url} alt="изображение ситуации" /> : '';
   }
 
   startTest = () => {
-    const tickets = getTickets(pddData);
+    const tickets = getTickets(TestTrafficLawsData);
     this.setState({ tickets, indexOfTicket: 0, falseAnswers: [] });
   }
 
   renderQuiz = () => {
     const { tickets, indexOfTicket, falseAnswers } = this.state;
     return (
-      indexOfTicket < 19
+      indexOfTicket <= 19
         ? (
           <div className="container margin-top-50">
             {this.getImage()}
@@ -70,7 +75,11 @@ export default class Quiz extends React.Component {
               />
             </div>
           </div>
-        ) : <Result falseAnswers={falseAnswers} startTest={this.startTest} />
+        ) : <Result
+              falseAnswers={falseAnswers}
+              startTest={this.startTest}
+              tickets={tickets}
+            />
     );
   }
 

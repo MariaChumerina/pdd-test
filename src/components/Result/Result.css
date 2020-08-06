@@ -1,0 +1,14 @@
+.wrong-answer {
+    margin-top: 5px;
+    color: red;
+}
+.right-answer {
+    margin-top: 5px;
+    color: forestgreen;
+}
+.result-answers-block {
+    background-color: #EDF1DD;
+    border: 1px solid #DAE1D2;
+    border-radius: 4px;
+    padding: 10px;
+}

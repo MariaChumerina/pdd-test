@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import Main from './components/Main/Main.jsx';
 import Header from './components/shared/Header.jsx';
-import Quiz from './components/Quiz/Quiz.jsx';
+import TestTrafficLaws from './components/TestTrafficLaws/TestTrafficLaws.jsx';
 
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route history={history} path="/" exact component={Main} />
-            <Route history={history} path="/test" exact component={Quiz} />
+            <Route history={history} path="/test" exact component={TestTrafficLaws} />
           </Switch>
         </>
     );
