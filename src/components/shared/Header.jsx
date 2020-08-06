@@ -7,7 +7,7 @@ export default function Header() {
       <>
         <HeaderDummy />
         <header>
-          <div className="container">
+          <div className="container header">
             <h1 className="title">
               Тест на знание правил дорожного движения
             </h1>
