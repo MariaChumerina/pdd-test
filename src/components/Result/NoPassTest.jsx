@@ -24,7 +24,7 @@ export default function NoPassTest({ falseAnswers, tickets }) {
               {ticket.title}
             </h3>
             <div className="margin-top-15">
-              Вы ответили:
+              Ваш ответ:
               <p className="wrong-answer">
                 {answer.answer}
               </p>
@@ -46,7 +46,7 @@ export default function NoPassTest({ falseAnswers, tickets }) {
           <b>{sessionSaver.getUserName()}</b>, к сожалению, вы не прошли тест.
         </p>
         <p>
-          Количество ошибок: {falseAnswers.length}
+          <b>Количество ошибок:</b> {falseAnswers.length}.
         </p>
         <button className="button-result-error button-green" onClick={handleClick}>
           Показать ошибки

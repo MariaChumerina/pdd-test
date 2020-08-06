@@ -13,10 +13,10 @@ export default function PassTest({ falseAnswers }) {
         </p>
         <p>
           {countOfFalseAnswers
-              ? `Количество ошибок: ${countOfFalseAnswers}` : 'Вы не совершили ни одной ошибки!'}
+              ? `Количество ошибок: ${countOfFalseAnswers}.` : 'Вы не совершили ни одной ошибки!'}
         </p>
         <p>
-          Закрепите свой результат и пройдите тест еще раз!
+          Закрепите свой результат и пройдите тест еще раз.
         </p>
       </>
   );
