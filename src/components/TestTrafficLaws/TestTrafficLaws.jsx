@@ -56,7 +56,7 @@ export default class TestTrafficLaws extends React.Component {
     this.setState({ tickets, indexOfTicket: 0, falseAnswers: [] });
   }
 
-  renderQuiz = () => {
+  renderTest = () => {
     const { tickets, indexOfTicket, falseAnswers } = this.state;
     return (
       indexOfTicket <= 19
@@ -86,7 +86,7 @@ export default class TestTrafficLaws extends React.Component {
     const { isSubmitted } = this.state;
     return (
       isSubmitted
-        ? this.renderQuiz()  : <FormInputName onSubmit={this.handleSubmit} />
+        ? this.renderTest()  : <FormInputName onSubmit={this.handleSubmit} />
     );
   }
 }
