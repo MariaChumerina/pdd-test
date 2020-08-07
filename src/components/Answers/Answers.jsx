@@ -4,23 +4,29 @@ import classNames from 'classnames';
 import './Answers.css';
 
 export default function Answers({ answers, chooseAnswer, hint }) {
-  const [id, setId] = useState(-1);
-  const [error, setError] = useState('');
+  const [selectedAnswerId, setSelectedAnswerId] = useState(-1);
+  const [noSelectedError, setNoSelectedError] = useState('');
   const [isHiddenHint, setVisibilityHint] = useState(true);
   const hintElRef = useRef(null);
 
+
   const handleSubmit = React.useCallback(() => {
-    if (id !== -1) {
-      chooseAnswer(id);
-      setError('');
-    } else setError('Пожалуйста, выберите 1 ответ');
-    setId(-1);
+    //validation: submit only if answer selected
+    if (selectedAnswerId !== -1) {
+      chooseAnswer(selectedAnswerId);
+      setNoSelectedError('');
+    } else setNoSelectedError('Пожалуйста, выберите 1 ответ');
+
+    //cancel selected answer for next question
+    setSelectedAnswerId(-1);
+    //made invisible hint for next question
     setVisibilityHint(true);
-  }, [chooseAnswer, id]);
+  }, [chooseAnswer, selectedAnswerId]);
 
   const handleClickAnswer = (i) => {
-    if (id === i) setId(-1);
-    else setId(i);
+    // double click cancels selection
+    if (selectedAnswerId === i) setSelectedAnswerId(-1);
+    else setSelectedAnswerId(i);
   };
 
   const handleClickHint = () => {
@@ -28,11 +34,11 @@ export default function Answers({ answers, chooseAnswer, hint }) {
     hintElRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const renderAnswers = () => answers.map((answer, i) => {
+  const renderListAnswers = () => answers.map((answer, i) => {
     const styles = classNames({
       'list-group-item': true,
-      'item-selected': id === i,
-      'item-hover': id !== i,
+      'item-selected': selectedAnswerId === i,
+      'item-hover': selectedAnswerId !== i,
     });
 
     return (
@@ -49,16 +55,21 @@ export default function Answers({ answers, chooseAnswer, hint }) {
     );
   });
 
+  const renderError = () => (noSelectedError
+    ? (
+      <div className="margin-top-15 error-text">
+        {noSelectedError}
+      </div>
+    ) : ''
+  );
+
   return (
     <ul className="list-group">
-      {renderAnswers()}
+      {renderListAnswers()}
       <div className="answers-button-block">
         <div className="margin-top-30">
-          {error ? (
-            <div className="margin-top-15 error-text">
-              {error}
-            </div>
-          ) : ''}
+          {/*if don't select and click to button choose answer*/}
+          {renderError()}
           <button type="submit" onClick={handleSubmit}>
             Выбрать
           </button>
