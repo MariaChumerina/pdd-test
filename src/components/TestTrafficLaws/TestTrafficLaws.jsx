@@ -64,6 +64,7 @@ export default class TestTrafficLaws extends React.Component {
         ? (
           <div className="container margin-top-50">
             {this.getImage()}
+            <p>{indexOfTicket + 1} из 20</p>
             <h2>
               {tickets[indexOfTicket].title}
             </h2>
