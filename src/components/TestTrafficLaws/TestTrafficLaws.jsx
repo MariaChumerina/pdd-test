@@ -14,6 +14,7 @@ export default class TestTrafficLaws extends React.Component {
     tickets: [],
     indexOfTicket: 0,
     wrongAnswers: [],
+    isTestEnded: false,
   }
 
   componentDidMount() {
@@ -28,11 +29,15 @@ export default class TestTrafficLaws extends React.Component {
 
   selectAnswer = (indexOfUserAnswer) => {
     const { indexOfTicket } = this.state;
+    const nextTicket = indexOfTicket + 1;
     const userAnswer = indexOfUserAnswer + 1;
 
-    // after selecting an answer change ticket(question) at test to next
-    const nextTicket = indexOfTicket + 1;
-    this.setState({ indexOfTicket: nextTicket });
+    /* if number of next question is not more than count of question,
+    change ticket(question) at test to next
+    */
+    if (nextTicket < countOfQuestions) {
+      this.setState({ indexOfTicket: nextTicket });
+    } else this.setState({ isTestEnded: true });
 
     this.checkUserAnswer(userAnswer, indexOfTicket);
   }
@@ -67,44 +72,44 @@ export default class TestTrafficLaws extends React.Component {
   // when user try pass test again
   tryTestAgain = () => {
     const tickets = getTickets();
-    this.setState({ tickets, indexOfTicket: 0, wrongAnswers: [] });
+    this.setState({ tickets, indexOfTicket: 0, wrongAnswers: [], isTestEnded: false });
   }
 
   renderTest = () => {
-    const { tickets, indexOfTicket, wrongAnswers } = this.state;
+    const { tickets, indexOfTicket, wrongAnswers, isTestEnded } = this.state;
     const numberOfQuestion = indexOfTicket + 1;
 
     return (
-        numberOfQuestion <= countOfQuestions
-        ? (
-          <div className="container margin-top-50">
-            {this.getImage()}
-            <p>
-              <span>
-                {`${numberOfQuestion} `}
-              </span>
-              <span>
-                из 20
-              </span>
-            </p>
-            <h2>
-              {tickets[indexOfTicket].title}
-            </h2>
-            <div>
-              <SuggestedAnswers
-                answers={tickets[indexOfTicket].answers}
-                selectAnswer={this.selectAnswer}
-                hint={tickets[indexOfTicket].hint}
-              />
-            </div>
-          </div>
-        ) : (
-          <Result
+      isTestEnded
+      ? (
+        <Result
             wrongAnswers={wrongAnswers}
             startTest={this.tryTestAgain}
             tickets={tickets}
+        />
+      ) : (
+      <div className="container margin-top-50">
+        {this.getImage()}
+        <p>
+          <span>
+            {`${numberOfQuestion} `}
+          </span>
+          <span>
+            из {countOfQuestions}
+          </span>
+        </p>
+        <h2>
+          {tickets[indexOfTicket].title}
+        </h2>
+        <div>
+          <SuggestedAnswers
+            answers={tickets[indexOfTicket].answers}
+            selectAnswer={this.selectAnswer}
+            hint={tickets[indexOfTicket].hint}
           />
-        )
+        </div>
+      </div>
+      )
     );
   }
 

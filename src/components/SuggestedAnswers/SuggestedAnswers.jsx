@@ -11,7 +11,7 @@ export default function SuggestedAnswers({ answers, selectAnswer, hint }) {
 
   const handleSubmitAnswer = React.useCallback(() => {
     // validation: submit only if answer selected
-    if (selectedAnswerId) {
+    if (selectedAnswerId !== null) {
       selectAnswer(selectedAnswerId);
       setNoSelectedError('');
     } else setNoSelectedError('Пожалуйста, выберите 1 ответ');
