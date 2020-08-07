@@ -36,11 +36,13 @@ export default class TestTrafficLaws extends React.Component {
     const { tickets, falseAnswers } = this.state;
     const trueAnswer = Number(tickets[indexOfTicket].correct);
     if (trueAnswer !== answerNumber) {
-      this.setState({ falseAnswers: [...falseAnswers, {
-        ticketNumber: indexOfTicket,
-        answer: tickets[indexOfTicket].answers[answerNumber - 1],
-        correct: tickets[indexOfTicket].answers[trueAnswer - 1],
-      }] });
+      this.setState({
+        falseAnswers: [...falseAnswers, {
+          ticketNumber: indexOfTicket,
+          answer: tickets[indexOfTicket].answers[answerNumber - 1],
+          correct: tickets[indexOfTicket].answers[trueAnswer - 1],
+        }]
+      });
     }
   }
 
@@ -48,7 +50,7 @@ export default class TestTrafficLaws extends React.Component {
     const { tickets, indexOfTicket } = this.state;
     const url = require(`../../TestTrafficLawsData/${tickets[indexOfTicket].image}`);
     return !tickets[indexOfTicket].image.includes('no_image.jpg')
-        ? <img src={url} alt="изображение ситуации" /> : '';
+      ? <img src={url} alt="изображение ситуации" /> : '';
   }
 
   startTest = () => {
@@ -63,7 +65,9 @@ export default class TestTrafficLaws extends React.Component {
         ? (
           <div className="container margin-top-50">
             {this.getImage()}
-            <p>{indexOfTicket + 1} из 20</p>
+            <p>
+              {indexOfTicket + 1} из 20
+            </p>
             <h2>
               {tickets[indexOfTicket].title}
             </h2>
@@ -75,11 +79,13 @@ export default class TestTrafficLaws extends React.Component {
               />
             </div>
           </div>
-        ) : <Result
-              falseAnswers={falseAnswers}
-              startTest={this.startTest}
-              tickets={tickets}
-            />
+        ) : (
+        <Result
+          falseAnswers={falseAnswers}
+          startTest={this.startTest}
+          tickets={tickets}
+        />
+        )
     );
   }
 
@@ -87,7 +93,7 @@ export default class TestTrafficLaws extends React.Component {
     const { isSubmitted } = this.state;
     return (
       isSubmitted
-        ? this.renderTest()  : <FormInputName onSubmit={this.handleSubmit} />
+        ? this.renderTest() : <FormInputName onSubmit={this.handleSubmit} />
     );
   }
 }

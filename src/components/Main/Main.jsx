@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import roadImg from './media/road.svg'
+import roadImg from './media/road.svg';
 
 export default function Main({ history }) {
   const handleClick = () => {
     history.push('/test');
-  }
+  };
 
   return (
     <div className="container margin-top-50">
@@ -19,7 +19,7 @@ export default function Main({ history }) {
         Поехали!
       </button>
       <div className="margin-top-30">
-        <img src={roadImg} alt="дорога"/>
+        <img src={roadImg} alt="дорога" />
       </div>
     </div>
   );
@@ -27,4 +27,4 @@ export default function Main({ history }) {
 
 Main.propTypes = {
   history: PropTypes.object.isRequired,
-}
+};

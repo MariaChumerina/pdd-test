@@ -5,15 +5,13 @@ import HeaderDummy from './HeaderDummy.jsx';
 import { Link } from 'react-router-dom';
 
 export default function Header({ history }) {
-  const renderLink = () => {
-    return (
-      <Link className="header-link" to='/' >
-        Главная
-      </Link>
-    );
-  }
+  const renderLink = () => (
+    <Link className="header-link" to="/" >
+      Главная
+    </Link>
+  );
 
-  return(
+  return (
     <>
       <HeaderDummy />
       <header>
@@ -28,6 +26,6 @@ export default function Header({ history }) {
   );
 }
 
-Header.propsTypes = {
+Header.propTypes = {
   history: PropTypes.object.isRequired,
-}
+};

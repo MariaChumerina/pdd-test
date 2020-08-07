@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default function Answers({ answers, chooseAnswer, hint }) {
-  const [ id, setId ] = useState(-1);
+  const [id, setId] = useState(-1);
   const [error, setError] = useState('');
   const [isHiddenHint, setVisibilityHint] = useState(true);
   const hintElRef = useRef(null);
@@ -12,8 +12,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
     if (id !== -1) {
       chooseAnswer(id);
       setError('');
-    }
-    else setError('Пожалуйста, выберите 1 ответ');
+    } else setError('Пожалуйста, выберите 1 ответ');
     setId(-1);
     setVisibilityHint(true);
   }, [chooseAnswer, id]);
@@ -21,12 +20,12 @@ export default function Answers({ answers, chooseAnswer, hint }) {
   const handleClickAnswer = (i) => {
     if (id === i) setId(-1);
     else setId(i);
-  }
+  };
 
   const handleClickHint = () => {
     setVisibilityHint(!isHiddenHint);
-    hintElRef.current.scrollIntoView({behavior: "smooth"});
-  }
+    hintElRef.current.scrollIntoView({  behavior: 'smooth'  });
+  };
 
   const renderAnswers = () => answers.map((answer, i) => {
     const styles = classNames({
@@ -36,7 +35,8 @@ export default function Answers({ answers, chooseAnswer, hint }) {
     });
 
     return (
-      <li className={styles}
+      <li
+        className={styles}
         key={answer}
         id={i}
         onClick={handleClickAnswer.bind(null, i)}
@@ -48,39 +48,39 @@ export default function Answers({ answers, chooseAnswer, hint }) {
     );
   });
 
-  return(
-      <ul className="list-group">
-        {renderAnswers()}
-        <div className="answers-button-block">
-          <div className="margin-top-30" >
-            {error ? (
-                <div className="margin-top-15 error-text">
-                  {error}
-                </div>
-            ) : ''}
-            <button type="submit" onClick={handleSubmit}>
-              Выбрать
-            </button>
-            <button
-              className="button-green button-hint-margin"
-              type="button"
-              onClick={handleClickHint}
-            >
-              Подсказка
-            </button>
-          </div>
-          <div
-            className={classNames({
-              'hint-hide': isHiddenHint,
-              'margin-top-15': true,
-              'hint-block': true,
-              })}
-             ref={hintElRef}
+  return (
+    <ul className="list-group">
+      {renderAnswers()}
+      <div className="answers-button-block">
+        <div className="margin-top-30">
+          {error ? (
+              <div className="margin-top-15 error-text">
+                {error}
+              </div>
+          ) : ''}
+          <button type="submit" onClick={handleSubmit}>
+            Выбрать
+          </button>
+          <button
+            className="button-green button-hint-margin"
+            type="button"
+            onClick={handleClickHint}
           >
-              {hint}
-          </div>
+            Подсказка
+          </button>
         </div>
-      </ul>
+        <div
+          className={classNames({
+            'hint-hide': isHiddenHint,
+            'margin-top-15': true,
+            'hint-block': true,
+            })}
+           ref={hintElRef}
+        >
+            {hint}
+        </div>
+      </div>
+    </ul>
   );
 }
 
@@ -88,4 +88,4 @@ Answers.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
   chooseAnswer: PropTypes.func.isRequired,
   hint: PropTypes.string.isRequired,
-}
+};

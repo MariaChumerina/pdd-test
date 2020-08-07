@@ -7,8 +7,8 @@ in order to 'move' the markup of the page down on a size, that equals <Header>'s
  */
 export default function HeaderDummy() {
   return (
-      <div id='top'>
-        <div className='header-rectangle'/>
-      </div>
+    <div id="top">
+      <div className="header-rectangle" />
+    </div>
   );
 }

@@ -7,19 +7,19 @@ export default function PassTest({ falseAnswers }) {
   const countOfFalseAnswers = falseAnswers.length;
 
   return (
-      <>
-        <img src={passTest} alt="тест пройден"/>
-        <p>
-          <b>{sessionSaver.getUserName()}</b>, поздравляем, вы прошли тест!
-        </p>
-        <p>
-          {countOfFalseAnswers
-              ? `Количество ошибок: ${countOfFalseAnswers}.` : 'Вы не совершили ни одной ошибки!'}
-        </p>
-      </>
+    <>
+      <img src={passTest} alt="тест пройден" />
+      <p>
+        <b>{sessionSaver.getUserName()}</b>, поздравляем, вы прошли тест!
+      </p>
+      <p>
+        {countOfFalseAnswers
+          ? `Количество ошибок: ${countOfFalseAnswers}.` : 'Вы не совершили ни одной ошибки!'}
+      </p>
+    </>
   );
 }
 
 PassTest.propTypes = {
-  falseAnswers: PropTypes.arrayOf(PropTypes.object).isRequired
-}
+  falseAnswers: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

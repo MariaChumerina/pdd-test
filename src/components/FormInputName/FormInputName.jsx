@@ -4,13 +4,13 @@ import testImg from './media/pdd-test-img.svg';
 import './FormInputName.css';
 
 export default function FormInputName({ onSubmit }) {
-  const [ value, setValue ] = useState('');
+  const [value, setValue] = useState('');
   const handleSubmit = React.useCallback(() => onSubmit(value), [onSubmit, value]);
 
   const handleChange = (e) => {
     const { value } = e.target;
     setValue(value);
-  }
+  };
 
   return (
     <div className="container margin-top-50">
@@ -37,4 +37,5 @@ export default function FormInputName({ onSubmit }) {
 
 FormInputName.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-}
+};
+
