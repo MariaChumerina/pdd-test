@@ -1,0 +1,28 @@
+.result-mistakes-block {
+    position: absolute;
+    top: 350px;
+    width: 80vw;
+}
+.mistake-block {
+    background-color: #EDF1DD;
+    border: 1px solid #DAE1D2;
+    border-radius: 4px;
+    padding: 10px;
+}
+.right-answer {
+    margin-top: 5px;
+    color: forestgreen;
+}
+.wrong-answer {
+    margin-top: 5px;
+    color: red;
+}
+@media screen and (max-width: 767px){
+    .result-mistakes-block {
+        width: 98%;
+        top: 280px;
+    }
+    img {
+        width: 90%;
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import getImageSrc from '../../utils/getImage.js';
 import PropTypes from 'prop-types';
+import './WrongAnswers.css';
 
 export default function WrongAnswers({ tickets, wrongAnswers }) {
   const getImage = (imageName) => (!imageName.includes('no_image.jpg')
@@ -9,7 +10,7 @@ export default function WrongAnswers({ tickets, wrongAnswers }) {
   const renderWrongAnswers = () => wrongAnswers.map((answer) => {
     const ticket = tickets[answer.ticketNumber];
     return (
-      <div className="result-answers-block margin-top-30" key={answer.ticketNumber}>
+      <div className="mistake-block margin-top-30" key={answer.ticketNumber}>
         {getImage(ticket.image)}
         <h3>
           {ticket.title}
@@ -31,7 +32,7 @@ export default function WrongAnswers({ tickets, wrongAnswers }) {
   });
 
   return (
-    <div className="result-errors-block margin-top-30">
+    <div className="result-mistakes-block margin-top-30">
       {renderWrongAnswers()}
     </div>
   );

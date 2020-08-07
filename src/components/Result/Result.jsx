@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Result.css';
 import NoPassTest from './NoPassTest.jsx';
 import PassTest from './PassTest.jsx';
-import WrongAnswers from './WrongAnswers.jsx';
+import WrongAnswers from '../WrongAnswers/WrongAnswers.jsx';
 
 export default function Result({ tickets, wrongAnswers, startTest }) {
   const handleClickStart = useCallback(() => startTest(), [startTest]);
@@ -24,7 +24,7 @@ export default function Result({ tickets, wrongAnswers, startTest }) {
         Попробовать снова
       </button>
       {wrongAnswers.length ? (
-        <button type="button" className="button-result-error button-green" onClick={handleClickMistakes}>
+        <button type="button" className="button-result-mistake button-green" onClick={handleClickMistakes}>
           Показать ошибки
         </button>
       ) : ''}
