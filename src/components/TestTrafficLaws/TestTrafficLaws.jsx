@@ -27,20 +27,30 @@ export default class TestTrafficLaws extends React.Component {
     this.setState({ isSubmitted: !isSubmitted });
   }
 
-  chooseAnswer = (answer) => {
+  chooseAnswer = (indexOfUserAnswer) => {
     const { indexOfTicket } = this.state;
-    this.setState({ indexOfTicket: indexOfTicket + 1 });
-    this.checkAnswer(answer + 1, indexOfTicket);
+    const userAnswer = indexOfUserAnswer + 1;
+
+    // after choosing an answer change ticket(question) at test to next
+    const nextTicket = indexOfTicket + 1;
+    this.setState({ indexOfTicket: nextTicket });
+
+    this.checkUserAnswer(userAnswer, indexOfTicket);
   }
 
-  checkAnswer = (userAnswer, indexOfTicket) => {
+  checkUserAnswer = (userAnswer, indexOfTicket) => {
     const { tickets, wrongAnswers } = this.state;
     const trueAnswer = Number(tickets[indexOfTicket].correct);
+
     if (trueAnswer !== userAnswer) {
+      /* if userAnswer is wrong, add block with wrong answer includes
+      number of ticket, answer from user and true answer.
+      further for convenient processing in the results
+     */
       this.setState({
         wrongAnswers: [...wrongAnswers, {
           ticketNumber: indexOfTicket,
-          answer: tickets[indexOfTicket].answers[userAnswer - 1],
+          userAnswer: tickets[indexOfTicket].answers[userAnswer - 1],
           correct: tickets[indexOfTicket].answers[trueAnswer - 1],
         }],
       });
@@ -49,11 +59,12 @@ export default class TestTrafficLaws extends React.Component {
 
   getImage = () => {
     const { tickets, indexOfTicket } = this.state;
-    const ticket = tickets[indexOfTicket];
-    return !ticket.image.includes('no_image.jpg')
-      ? <img src={getImageSrc(ticket.image)} alt="изображение ситуации" /> : '';
+    const imageName = tickets[indexOfTicket].image;
+    return !imageName.includes('no_image.jpg')
+      ? <img src={getImageSrc(imageName)} alt="изображение ситуации" /> : '';
   }
 
+  // when user try pass test again
   startTest = () => {
     const tickets = getTickets(TestTrafficLawsData);
     this.setState({ tickets, indexOfTicket: 0, wrongAnswers: [] });

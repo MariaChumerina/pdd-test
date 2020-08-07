@@ -9,7 +9,7 @@ export default function SuggestedAnswers({ answers, chooseAnswer, hint }) {
   const [isHiddenHint, setVisibilityHint] = useState(true);
   const hintElRef = useRef(null);
 
-  const handleSubmit = React.useCallback(() => {
+  const handleSubmitAnswer = React.useCallback(() => {
     // validation: submit only if answer selected
     if (selectedAnswerId !== -1) {
       chooseAnswer(selectedAnswerId);
@@ -69,7 +69,7 @@ export default function SuggestedAnswers({ answers, chooseAnswer, hint }) {
         <div className="margin-top-30">
           {/* if don't select and click to button choose answer */}
           {renderError()}
-          <button type="submit" onClick={handleSubmit}>
+          <button type="button" onClick={handleSubmitAnswer}>
             Выбрать
           </button>
           <button

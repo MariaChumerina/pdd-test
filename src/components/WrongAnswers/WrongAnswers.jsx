@@ -18,7 +18,7 @@ export default function WrongAnswers({ tickets, wrongAnswers }) {
         <div className="margin-top-15">
           Ваш ответ:
           <p className="wrong-answer">
-            {answer.answer}
+            {answer.userAnswer}
           </p>
         </div>
         <div className="margin-top-15">
