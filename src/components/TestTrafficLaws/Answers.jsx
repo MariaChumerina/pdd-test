@@ -18,7 +18,8 @@ export default function Answers({ answers, chooseAnswer, hint }) {
   }, [chooseAnswer, id]);
 
   const handleClickAnswer = (i) => {
-    setId(i);
+    if (id === i) setId(-1);
+    else setId(i);
   }
 
   const handleClickHint = () => {
@@ -30,7 +31,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
     const styles = classNames({
       'list-group-item': true,
       'item-selected': id === i,
-      'item-hover': true,
+      'item-hover': id !== i,
     });
 
     return (

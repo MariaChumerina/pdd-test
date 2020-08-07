@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 .item-selected {
-    background-color: lightgrey;
+    background-color: #B5C5D3;
 }
 .list-group-item:active {
     background-color: lightgrey;
