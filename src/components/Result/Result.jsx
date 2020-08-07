@@ -47,7 +47,7 @@ export default function Result({ tickets, falseAnswers, startTest }) {
     <div className="container result-block margin-top-50">
       {falseAnswers.length > 2
         ? <NoPassTest falseAnswers={falseAnswers} tickets={tickets} />
-          : <PassTest falseAnswers={falseAnswers} />}
+        : <PassTest falseAnswers={falseAnswers} />}
       <button className="result-button" type="button" onClick={handleClickStart}>
         Попробовать снова
       </button>

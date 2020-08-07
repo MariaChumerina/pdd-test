@@ -10,7 +10,10 @@ export default function PassTest({ falseAnswers }) {
     <>
       <img src={passTest} alt="тест пройден" />
       <p>
-        <b>{sessionSaver.getUserName()}</b>, поздравляем, вы прошли тест!
+        <b>{sessionSaver.getUserName()}</b>
+        <span>
+          , поздравляем, вы прошли тест!
+        </span>
       </p>
       <p>
         {countOfFalseAnswers

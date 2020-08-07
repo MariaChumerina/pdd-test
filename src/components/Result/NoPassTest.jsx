@@ -8,10 +8,20 @@ export default function NoPassTest({ falseAnswers }) {
     <>
       <img src={noPassTest} alt="тест не пройден" />
       <p>
-        <b>{sessionSaver.getUserName()}</b>, к сожалению, вы не прошли тест.
+        <b>
+          {sessionSaver.getUserName()}
+        </b>
+        <span>
+          , к сожалению, вы не прошли тест.
+        </span>
       </p>
       <p>
-        <b>Количество ошибок:</b> {falseAnswers.length}.
+        <b>
+          Количество ошибок:
+        </b>
+        <span>
+          {` ${falseAnswers.length}.`}
+        </span>
       </p>
     </>
   );
