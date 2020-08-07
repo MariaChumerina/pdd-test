@@ -33,14 +33,14 @@ export default class TestTrafficLaws extends React.Component {
     this.checkAnswer(answer + 1, indexOfTicket);
   }
 
-  checkAnswer = (answerNumber, indexOfTicket) => {
+  checkAnswer = (userAnswer, indexOfTicket) => {
     const { tickets, wrongAnswers } = this.state;
     const trueAnswer = Number(tickets[indexOfTicket].correct);
-    if (trueAnswer !== answerNumber) {
+    if (trueAnswer !== userAnswer) {
       this.setState({
         wrongAnswers: [...wrongAnswers, {
           ticketNumber: indexOfTicket,
-          answer: tickets[indexOfTicket].answers[answerNumber - 1],
+          answer: tickets[indexOfTicket].answers[userAnswer - 1],
           correct: tickets[indexOfTicket].answers[trueAnswer - 1],
         }],
       });
