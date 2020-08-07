@@ -38,4 +38,3 @@ export default function FormInputName({ onSubmit }) {
 FormInputName.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
-

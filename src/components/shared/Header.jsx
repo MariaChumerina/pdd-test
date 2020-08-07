@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function Header({ history }) {
   const renderLink = () => (
-    <Link className="header-link" to="/" >
+    <Link className="header-link" to="/">
       Главная
     </Link>
   );

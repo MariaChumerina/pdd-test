@@ -52,9 +52,9 @@ export default function Result({ tickets, falseAnswers, startTest }) {
         Попробовать снова
       </button>
       {falseAnswers.length ? (
-          <button type="button" className="button-result-error button-green" onClick={handleClick}>
-            Показать ошибки
-          </button>
+        <button type="button" className="button-result-error button-green" onClick={handleClick}>
+          Показать ошибки
+        </button>
       ) : ''}
       {isVisibleErrors ? (
         <div className="result-errors-block margin-top-30">

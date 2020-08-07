@@ -41,7 +41,7 @@ export default class TestTrafficLaws extends React.Component {
           ticketNumber: indexOfTicket,
           answer: tickets[indexOfTicket].answers[answerNumber - 1],
           correct: tickets[indexOfTicket].answers[trueAnswer - 1],
-        }]
+        }],
       });
     }
   }
@@ -80,11 +80,11 @@ export default class TestTrafficLaws extends React.Component {
             </div>
           </div>
         ) : (
-        <Result
-          falseAnswers={falseAnswers}
-          startTest={this.startTest}
-          tickets={tickets}
-        />
+          <Result
+            falseAnswers={falseAnswers}
+            startTest={this.startTest}
+            tickets={tickets}
+          />
         )
     );
   }
