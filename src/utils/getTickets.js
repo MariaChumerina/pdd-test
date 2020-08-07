@@ -6,6 +6,7 @@ function getArrayRandomNumbers(numbersCount, from, to) {
   const randomNumbers = [];
   while (randomNumbers.length < numbersCount) {
     const randomNumber = getRandomNumber(from, to);
+    // check that numbers not repeated
     if (!randomNumbers.includes(randomNumber)) {
       randomNumbers.push(randomNumber);
     }
@@ -14,7 +15,9 @@ function getArrayRandomNumbers(numbersCount, from, to) {
 }
 
 export default function getTickets(data) {
+  // first get a random sections
   const numbersOfSections = getArrayRandomNumbers(20, 0, data.length);
+  // then select one ticket at each sections
   return numbersOfSections.map((number) => {
     const section = data[number];
     const randomTicket = getRandomNumber(1, section.tickets.length);
