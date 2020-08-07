@@ -13,9 +13,11 @@
     margin-top: 10px;
     min-height: 50px;
 }
+.list-group-item:hover {
+    cursor: pointer;
+}
 .item-hover:hover {
     background-color: lightgrey;
-    cursor: pointer;
 }
 .item-selected {
     background-color: #B5C5D3;
