@@ -4,6 +4,7 @@ import './Result.css';
 import NoPassTest from './NoPassTest.jsx';
 import PassTest from './PassTest.jsx';
 import WrongAnswers from '../WrongAnswers/WrongAnswers.jsx';
+import { countOfAllowedMistakes } from '../../settings/settings.js';
 
 export default function Result({ tickets, wrongAnswers, startTest }) {
   const handleClickStart = useCallback(() => startTest(), [startTest]);
@@ -17,7 +18,7 @@ export default function Result({ tickets, wrongAnswers, startTest }) {
 
   return (
     <div className="container result-block margin-top-50">
-      {isPassedTest(2)
+      {isPassedTest(countOfAllowedMistakes)
         ? <PassTest wrongAnswers={wrongAnswers} />
         : <NoPassTest wrongAnswers={wrongAnswers} tickets={tickets} />}
       <button className="result-button" type="button" onClick={handleClickStart}>

@@ -16,7 +16,7 @@ export default function PassTest({ wrongAnswers }) {
         </span>
       </p>
       <p>
-        {countOfWrongAnswers
+        {countOfWrongAnswers > 0
           ? `Количество ошибок: ${countOfWrongAnswers}.` : 'Вы не совершили ни одной ошибки!'}
       </p>
     </>

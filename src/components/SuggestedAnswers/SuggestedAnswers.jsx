@@ -3,33 +3,33 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './SuggestedAnswers.css';
 
-export default function SuggestedAnswers({ answers, chooseAnswer, hint }) {
-  const [selectedAnswerId, setSelectedAnswerId] = useState(-1);
+export default function SuggestedAnswers({ answers, selectAnswer, hint }) {
+  const [selectedAnswerId, setSelectedAnswerId] = useState(null);
   const [noSelectedError, setNoSelectedError] = useState('');
-  const [isHiddenHint, setVisibilityHint] = useState(true);
+  const [isHiddenHint, setHiddenHint] = useState(true);
   const hintElRef = useRef(null);
 
   const handleSubmitAnswer = React.useCallback(() => {
     // validation: submit only if answer selected
-    if (selectedAnswerId !== -1) {
-      chooseAnswer(selectedAnswerId);
+    if (selectedAnswerId) {
+      selectAnswer(selectedAnswerId);
       setNoSelectedError('');
     } else setNoSelectedError('Пожалуйста, выберите 1 ответ');
 
     // cancel selected answer for next question
-    setSelectedAnswerId(-1);
+    setSelectedAnswerId(null);
     // made invisible hint for next question
-    setVisibilityHint(true);
-  }, [chooseAnswer, selectedAnswerId]);
+    setHiddenHint(true);
+  }, [selectAnswer, selectedAnswerId]);
 
   const handleClickAnswer = (i) => {
     // double click cancels selection
-    if (selectedAnswerId === i) setSelectedAnswerId(-1);
+    if (selectedAnswerId === i) setSelectedAnswerId(null);
     else setSelectedAnswerId(i);
   };
 
   const handleClickHint = () => {
-    setVisibilityHint(!isHiddenHint);
+    setHiddenHint(!isHiddenHint);
     hintElRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -97,6 +97,6 @@ export default function SuggestedAnswers({ answers, chooseAnswer, hint }) {
 
 SuggestedAnswers.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
-  chooseAnswer: PropTypes.func.isRequired,
+  selectAnswer: PropTypes.func.isRequired,
   hint: PropTypes.string.isRequired,
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import FormInputName from '../FormInputName/FormInputName.jsx';
-import TestTrafficLawsData from '../../TestTrafficLawsData/questions.json';
 import { sessionSaver } from '../../SessionSaver.js';
 import getTickets from '../../utils/getTickets.js';
 import SuggestedAnswers from '../SuggestedAnswers/SuggestedAnswers.jsx';
@@ -17,7 +16,7 @@ export default class TestTrafficLaws extends React.Component {
   }
 
   componentDidMount() {
-    const tickets = getTickets(TestTrafficLawsData);
+    const tickets = getTickets();
     this.setState({ tickets });
   }
 
@@ -26,11 +25,11 @@ export default class TestTrafficLaws extends React.Component {
     this.setState({ isSubmitted: true });
   }
 
-  chooseAnswer = (indexOfUserAnswer) => {
+  selectAnswer = (indexOfUserAnswer) => {
     const { indexOfTicket } = this.state;
     const userAnswer = indexOfUserAnswer + 1;
 
-    // after choosing an answer change ticket(question) at test to next
+    // after selecting an answer change ticket(question) at test to next
     const nextTicket = indexOfTicket + 1;
     this.setState({ indexOfTicket: nextTicket });
 
@@ -39,7 +38,8 @@ export default class TestTrafficLaws extends React.Component {
 
   checkUserAnswer = (userAnswer, indexOfTicket) => {
     const { tickets, wrongAnswers } = this.state;
-    const trueAnswer = Number(tickets[indexOfTicket].correct);
+    const ticket = tickets[indexOfTicket];
+    const trueAnswer = Number(ticket.correct);
 
     if (trueAnswer !== userAnswer) {
       /* if userAnswer is wrong, add block with wrong answer includes
@@ -49,8 +49,8 @@ export default class TestTrafficLaws extends React.Component {
       this.setState({
         wrongAnswers: [...wrongAnswers, {
           ticketNumber: indexOfTicket,
-          userAnswer: tickets[indexOfTicket].answers[userAnswer - 1],
-          correct: tickets[indexOfTicket].answers[trueAnswer - 1],
+          userAnswer: ticket.answers[userAnswer - 1],
+          correct: ticket.answers[trueAnswer - 1],
         }],
       });
     }
@@ -64,8 +64,8 @@ export default class TestTrafficLaws extends React.Component {
   }
 
   // when user try pass test again
-  startTest = () => {
-    const tickets = getTickets(TestTrafficLawsData);
+  tryTestAgain = () => {
+    const tickets = getTickets();
     this.setState({ tickets, indexOfTicket: 0, wrongAnswers: [] });
   }
 
@@ -92,7 +92,7 @@ export default class TestTrafficLaws extends React.Component {
             <div>
               <SuggestedAnswers
                 answers={tickets[indexOfTicket].answers}
-                chooseAnswer={this.chooseAnswer}
+                selectAnswer={this.selectAnswer}
                 hint={tickets[indexOfTicket].hint}
               />
             </div>
@@ -100,7 +100,7 @@ export default class TestTrafficLaws extends React.Component {
         ) : (
           <Result
             wrongAnswers={wrongAnswers}
-            startTest={this.startTest}
+            startTest={this.tryTestAgain}
             tickets={tickets}
           />
         )

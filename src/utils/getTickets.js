@@ -1,3 +1,6 @@
+import TestTrafficLawsData from '../TestTrafficLawsData/questions.json';
+import { countOfQuestions } from '../settings/settings.js';
+
 function getRandomNumber(leftBorder = 1, rightBorder = 2) {
   return Math.floor((Math.random() * (rightBorder - leftBorder)) + leftBorder);
 }
@@ -14,12 +17,12 @@ function getArrayRandomNumbers(numbersCount, from, to) {
   return randomNumbers;
 }
 
-export default function getTickets(data) {
+export default function getTickets() {
   // first get a random sections
-  const numbersOfSections = getArrayRandomNumbers(20, 0, data.length);
+  const numbersOfSections = getArrayRandomNumbers(countOfQuestions, 0, TestTrafficLawsData.length);
   // then select one ticket at each sections
   return numbersOfSections.map((number) => {
-    const section = data[number];
+    const section = TestTrafficLawsData[number];
     const randomTicket = getRandomNumber(1, section.tickets.length);
     return section.tickets[randomTicket];
   });
