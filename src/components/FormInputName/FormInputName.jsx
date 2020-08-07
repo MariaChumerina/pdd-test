@@ -4,12 +4,12 @@ import testImg from './media/pdd-test-img.svg';
 import './FormInputName.css';
 
 export default function FormInputName({ onSubmit }) {
-  const [value, setValue] = useState('');
-  const handleSubmit = React.useCallback(() => onSubmit(value), [onSubmit, value]);
+  const [name, setName] = useState('');
+  const handleSubmit = React.useCallback(() => onSubmit(name), [onSubmit, name]);
 
   const handleChange = (e) => {
     const { value } = e.target;
-    setValue(value);
+    setName(value);
   };
 
   return (
@@ -22,7 +22,7 @@ export default function FormInputName({ onSubmit }) {
         className="form-field margin-top-30"
         pattern="[A-Za-zА-Яа-яЁё0-9]{1,}"
         placeholder="Введите имя"
-        value={value}
+        value={name}
         onChange={handleChange}
         required
       />

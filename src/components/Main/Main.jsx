@@ -4,6 +4,7 @@ import roadImg from './media/road.svg';
 
 export default function Main({ history }) {
   const handleClick = () => {
+  // redirect to '/test' page when user submit
     history.push('/test');
   };
 

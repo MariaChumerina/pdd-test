@@ -22,9 +22,8 @@ export default class TestTrafficLaws extends React.Component {
   }
 
   handleSubmit = (value) => {
-    const { isSubmitted } = this.state;
     sessionSaver.setUserName(value);
-    this.setState({ isSubmitted: !isSubmitted });
+    this.setState({ isSubmitted: true });
   }
 
   chooseAnswer = (indexOfUserAnswer) => {
