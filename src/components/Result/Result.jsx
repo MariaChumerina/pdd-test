@@ -5,7 +5,7 @@ import NoPassTest from './NoPassTest.jsx';
 import PassTest from './PassTest.jsx';
 import getImageSrc from '../../utils/getImage.js';
 
-export default function Result({ tickets, falseAnswers, startTest }) {
+export default function Result({ tickets, wrongAnswers, startTest }) {
   const handleClickStart = useCallback(() => startTest(), [startTest]);
   const [isVisibleErrors, setVisibilityErrors] = useState(false);
 
@@ -13,7 +13,7 @@ export default function Result({ tickets, falseAnswers, startTest }) {
     setVisibilityErrors(!isVisibleErrors);
   };
 
-  const renderFalseAnswers = () => falseAnswers.map((answer) => {
+  const renderWrongAnswers = () => wrongAnswers.map((answer) => {
     const ticket = tickets[answer.ticketNumber];
 
     const getImage = () => (!ticket.image.includes('no_image.jpg')
@@ -43,20 +43,20 @@ export default function Result({ tickets, falseAnswers, startTest }) {
 
   return (
     <div className="container result-block margin-top-50">
-      {falseAnswers.length > 2
-        ? <NoPassTest falseAnswers={falseAnswers} tickets={tickets} />
-        : <PassTest falseAnswers={falseAnswers} />}
+      {wrongAnswers.length > 2
+        ? <NoPassTest wrongAnswers={wrongAnswers} tickets={tickets} />
+        : <PassTest wrongAnswers={wrongAnswers} />}
       <button className="result-button" type="button" onClick={handleClickStart}>
         Попробовать снова
       </button>
-      {falseAnswers.length ? (
+      {wrongAnswers.length ? (
         <button type="button" className="button-result-error button-green" onClick={handleClick}>
           Показать ошибки
         </button>
       ) : ''}
       {isVisibleErrors ? (
         <div className="result-errors-block margin-top-30">
-          {renderFalseAnswers()}
+          {renderWrongAnswers()}
         </div>
       ) : ''}
     </div>
@@ -65,6 +65,6 @@ export default function Result({ tickets, falseAnswers, startTest }) {
 
 Result.propTypes = {
   tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  falseAnswers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  wrongAnswers: PropTypes.arrayOf(PropTypes.object).isRequired,
   startTest: PropTypes.func.isRequired,
 };

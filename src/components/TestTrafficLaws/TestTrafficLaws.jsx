@@ -13,7 +13,7 @@ export default class TestTrafficLaws extends React.Component {
     isSubmitted: false,
     tickets: [],
     indexOfTicket: 0,
-    falseAnswers: [],
+    wrongAnswers: [],
   }
 
   componentDidMount() {
@@ -34,11 +34,11 @@ export default class TestTrafficLaws extends React.Component {
   }
 
   checkAnswer = (answerNumber, indexOfTicket) => {
-    const { tickets, falseAnswers } = this.state;
+    const { tickets, wrongAnswers } = this.state;
     const trueAnswer = Number(tickets[indexOfTicket].correct);
     if (trueAnswer !== answerNumber) {
       this.setState({
-        falseAnswers: [...falseAnswers, {
+        wrongAnswers: [...wrongAnswers, {
           ticketNumber: indexOfTicket,
           answer: tickets[indexOfTicket].answers[answerNumber - 1],
           correct: tickets[indexOfTicket].answers[trueAnswer - 1],
@@ -56,11 +56,11 @@ export default class TestTrafficLaws extends React.Component {
 
   startTest = () => {
     const tickets = getTickets(TestTrafficLawsData);
-    this.setState({ tickets, indexOfTicket: 0, falseAnswers: [] });
+    this.setState({ tickets, indexOfTicket: 0, wrongAnswers: [] });
   }
 
   renderTest = () => {
-    const { tickets, indexOfTicket, falseAnswers } = this.state;
+    const { tickets, indexOfTicket, wrongAnswers } = this.state;
     const numberOfQuestion = indexOfTicket + 1;
 
     return (
@@ -89,7 +89,7 @@ export default class TestTrafficLaws extends React.Component {
           </div>
         ) : (
           <Result
-            falseAnswers={falseAnswers}
+            wrongAnswers={wrongAnswers}
             startTest={this.startTest}
             tickets={tickets}
           />

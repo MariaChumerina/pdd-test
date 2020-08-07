@@ -3,8 +3,8 @@ import passTest from './media/pass.svg';
 import { sessionSaver } from '../../SessionSaver.js';
 import React from 'react';
 
-export default function PassTest({ falseAnswers }) {
-  const countOfFalseAnswers = falseAnswers.length;
+export default function PassTest({ wrongAnswers }) {
+  const countOfWrongAnswers = wrongAnswers.length;
 
   return (
     <>
@@ -16,13 +16,13 @@ export default function PassTest({ falseAnswers }) {
         </span>
       </p>
       <p>
-        {countOfFalseAnswers
-          ? `Количество ошибок: ${countOfFalseAnswers}.` : 'Вы не совершили ни одной ошибки!'}
+        {countOfWrongAnswers
+          ? `Количество ошибок: ${countOfWrongAnswers}.` : 'Вы не совершили ни одной ошибки!'}
       </p>
     </>
   );
 }
 
 PassTest.propTypes = {
-  falseAnswers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  wrongAnswers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
