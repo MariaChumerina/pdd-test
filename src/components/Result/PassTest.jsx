@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import passTest from './media/pass.svg';
 import { sessionSaver } from '../../SessionSaver.js';
 import React from 'react';
@@ -17,4 +18,8 @@ export default function PassTest({ falseAnswers }) {
         </p>
       </>
   );
+}
+
+PassTest.propTypes = {
+  falseAnswers: PropTypes.arrayOf(PropTypes.object).isRequired
 }

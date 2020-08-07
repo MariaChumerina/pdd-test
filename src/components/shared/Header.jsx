@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Header.css';
 import HeaderDummy from './HeaderDummy.jsx';
 import { Link } from 'react-router-dom';
 
-export default function Header({history}) {
+export default function Header({ history }) {
   const renderLink = () => {
     return (
       <Link className="header-link" to='/' >
@@ -25,4 +26,8 @@ export default function Header({history}) {
       </header>
     </>
   );
+}
+
+Header.propsTypes = {
+  history: PropTypes.object.isRequired,
 }

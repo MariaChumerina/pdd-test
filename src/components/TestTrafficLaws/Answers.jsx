@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export default function Answers({ answers, chooseAnswer, hint }) {
@@ -81,4 +82,10 @@ export default function Answers({ answers, chooseAnswer, hint }) {
         </div>
       </ul>
   );
+}
+
+Answers.propTypes = {
+  answers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  chooseAnswer: PropTypes.func.isRequired,
+  hint: PropTypes.string.isRequired,
 }

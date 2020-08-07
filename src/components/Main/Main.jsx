@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import roadImg from './media/road.svg'
 
 export default function Main({ history }) {
@@ -22,4 +23,8 @@ export default function Main({ history }) {
       </div>
     </div>
   );
+}
+
+Main.propTypes = {
+  history: PropTypes.object.isRequired,
 }

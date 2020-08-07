@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import './Result.css';
 import NoPassTest from './NoPassTest.jsx';
 import PassTest from './PassTest.jsx';
@@ -63,4 +64,10 @@ export default function Result({ tickets, falseAnswers, startTest }) {
       ) : ''}
     </div>
   );
+}
+
+Result.propTypes = {
+  tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  falseAnswers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  startTest: PropTypes.func.isRequired,
 }

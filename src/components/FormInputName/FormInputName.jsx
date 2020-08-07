@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import testImg from './media/pdd-test-img.svg';
 import './FormInputName.css';
 
-export default function FormInputName({onSubmit}) {
+export default function FormInputName({ onSubmit }) {
   const [ value, setValue ] = useState('');
   const handleSubmit = React.useCallback(() => onSubmit(value), [onSubmit, value]);
 
@@ -32,4 +33,8 @@ export default function FormInputName({onSubmit}) {
       </div>
     </div>
   );
+}
+
+FormInputName.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
