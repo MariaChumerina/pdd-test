@@ -6,6 +6,7 @@ import SuggestedAnswers from '../SuggestedAnswers/SuggestedAnswers.jsx';
 import './TestTrafficLaws.css';
 import Result from '../Result/Result.jsx';
 import getImageSrc from '../../utils/getImage.js';
+import { countOfQuestions } from '../../settings/settings.js';
 
 export default class TestTrafficLaws extends React.Component {
   state = {
@@ -74,7 +75,7 @@ export default class TestTrafficLaws extends React.Component {
     const numberOfQuestion = indexOfTicket + 1;
 
     return (
-      indexOfTicket <= 19
+        numberOfQuestion <= countOfQuestions
         ? (
           <div className="container margin-top-50">
             {this.getImage()}
