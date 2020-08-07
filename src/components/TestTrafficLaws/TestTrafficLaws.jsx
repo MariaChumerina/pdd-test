@@ -49,8 +49,9 @@ export default class TestTrafficLaws extends React.Component {
 
   getImage = () => {
     const { tickets, indexOfTicket } = this.state;
-    return !tickets[indexOfTicket].image.includes('no_image.jpg')
-      ? <img src={getImageSrc(tickets[indexOfTicket].image)} alt="изображение ситуации" /> : '';
+    const ticket = tickets[indexOfTicket];
+    return !ticket.image.includes('no_image.jpg')
+      ? <img src={getImageSrc(ticket.image)} alt="изображение ситуации" /> : '';
   }
 
   startTest = () => {
