@@ -3,7 +3,7 @@ import FormInputName from '../FormInputName/FormInputName.jsx';
 import TestTrafficLawsData from '../../TestTrafficLawsData/questions.json';
 import { sessionSaver } from '../../SessionSaver.js';
 import getTickets from '../../utils/getTickets.js';
-import Answers from './Answers.jsx';
+import Answers from '../Anwers/Answers.jsx';
 import './TestTrafficLaws.css';
 import Result from '../Result/Result.jsx';
 import getImageSrc from '../../utils/getImage.js';

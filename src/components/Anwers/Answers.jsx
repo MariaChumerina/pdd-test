@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import './Answers.css';
 
 export default function Answers({ answers, chooseAnswer, hint }) {
   const [id, setId] = useState(-1);
