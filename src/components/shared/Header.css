@@ -22,8 +22,8 @@ header {
 .header-link {
     text-decoration: none;
     color: #161B46;
-    line-height: 27px;
     font-weight: 500;
+    font-size: 18px;
 }
 .header-link:hover {
     opacity: 0.6;
