@@ -77,6 +77,7 @@ export default class TestTrafficLaws extends React.Component {
 
   renderTest = () => {
     const { tickets, indexOfTicket, wrongAnswers, isTestEnded } = this.state;
+    const ticket = tickets[indexOfTicket];
     const numberOfQuestion = indexOfTicket + 1;
 
     return (
@@ -99,13 +100,13 @@ export default class TestTrafficLaws extends React.Component {
           </span>
         </p>
         <h2>
-          {tickets[indexOfTicket].title}
+          {ticket.title}
         </h2>
         <div>
           <SuggestedAnswers
-            answers={tickets[indexOfTicket].answers}
+            answers={ticket.answers}
             selectAnswer={this.selectAnswer}
-            hint={tickets[indexOfTicket].hint}
+            hint={ticket.hint}
           />
         </div>
       </div>
