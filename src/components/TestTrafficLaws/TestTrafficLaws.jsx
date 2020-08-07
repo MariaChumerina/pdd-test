@@ -72,45 +72,49 @@ export default class TestTrafficLaws extends React.Component {
   // when user try pass test again
   tryTestAgain = () => {
     const tickets = getTickets();
-    this.setState({ tickets, indexOfTicket: 0, wrongAnswers: [], isTestEnded: false });
+    this.setState({
+      tickets, indexOfTicket: 0, wrongAnswers: [], isTestEnded: false,
+    });
   }
 
   renderTest = () => {
-    const { tickets, indexOfTicket, wrongAnswers, isTestEnded } = this.state;
+    const {
+      tickets, indexOfTicket, wrongAnswers, isTestEnded,
+    } = this.state;
     const ticket = tickets[indexOfTicket];
     const numberOfQuestion = indexOfTicket + 1;
 
     return (
       isTestEnded
-      ? (
-        <Result
+        ? (
+          <Result
             wrongAnswers={wrongAnswers}
             startTest={this.tryTestAgain}
             tickets={tickets}
-        />
-      ) : (
-      <div className="container margin-top-50">
-        {this.getImage()}
-        <p>
-          <span>
-            {`${numberOfQuestion} `}
-          </span>
-          <span>
-            из {countOfQuestions}
-          </span>
-        </p>
-        <h2>
-          {ticket.title}
-        </h2>
-        <div>
-          <SuggestedAnswers
-            answers={ticket.answers}
-            selectAnswer={this.selectAnswer}
-            hint={ticket.hint}
           />
-        </div>
-      </div>
-      )
+        ) : (
+          <div className="container margin-top-50">
+            {this.getImage()}
+            <p>
+              <span>
+                {`${numberOfQuestion} `}
+              </span>
+              <span>
+                {`из ${countOfQuestions}`}
+              </span>
+            </p>
+            <h2>
+              {ticket.title}
+            </h2>
+            <div>
+              <SuggestedAnswers
+                answers={ticket.answers}
+                selectAnswer={this.selectAnswer}
+                hint={ticket.hint}
+              />
+            </div>
+          </div>
+        )
     );
   }
 
