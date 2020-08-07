@@ -13,6 +13,10 @@
 }
 @media screen and (max-width: 767px) {
     .form-field {
-        width: 70vw;
+        width: 55vw;
+    }
+    .form-image {
+        width: 50vw;
+        height: 30vh;
     }
 }

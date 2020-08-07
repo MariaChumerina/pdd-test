@@ -14,7 +14,7 @@ export default function FormInputName({onSubmit}) {
   return (
     <div className="container margin-top-50">
       <div className="margin-top-30">
-        <img src={testImg} alt="знак STOP" />
+        <img className="form-image" src={testImg} alt="знак STOP" />
       </div>
       <input
         type="text"
