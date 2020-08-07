@@ -3,7 +3,7 @@ import FormInputName from '../FormInputName/FormInputName.jsx';
 import TestTrafficLawsData from '../../TestTrafficLawsData/questions.json';
 import { sessionSaver } from '../../SessionSaver.js';
 import getTickets from '../../utils/getTickets.js';
-import Answers from '../Answers/Answers.jsx';
+import SuggestedAnswers from '../SuggestedAnswers/SuggestedAnswers.jsx';
 import './TestTrafficLaws.css';
 import Result from '../Result/Result.jsx';
 import getImageSrc from '../../utils/getImage.js';
@@ -80,7 +80,7 @@ export default class TestTrafficLaws extends React.Component {
               {tickets[indexOfTicket].title}
             </h2>
             <div>
-              <Answers
+              <SuggestedAnswers
                 answers={tickets[indexOfTicket].answers}
                 chooseAnswer={this.chooseAnswer}
                 hint={tickets[indexOfTicket].hint}

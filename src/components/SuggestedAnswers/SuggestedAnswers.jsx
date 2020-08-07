@@ -1,25 +1,24 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './Answers.css';
+import './SuggestedAnswers.css';
 
-export default function Answers({ answers, chooseAnswer, hint }) {
+export default function SuggestedAnswers({ answers, chooseAnswer, hint }) {
   const [selectedAnswerId, setSelectedAnswerId] = useState(-1);
   const [noSelectedError, setNoSelectedError] = useState('');
   const [isHiddenHint, setVisibilityHint] = useState(true);
   const hintElRef = useRef(null);
 
-
   const handleSubmit = React.useCallback(() => {
-    //validation: submit only if answer selected
+    // validation: submit only if answer selected
     if (selectedAnswerId !== -1) {
       chooseAnswer(selectedAnswerId);
       setNoSelectedError('');
     } else setNoSelectedError('Пожалуйста, выберите 1 ответ');
 
-    //cancel selected answer for next question
+    // cancel selected answer for next question
     setSelectedAnswerId(-1);
-    //made invisible hint for next question
+    // made invisible hint for next question
     setVisibilityHint(true);
   }, [chooseAnswer, selectedAnswerId]);
 
@@ -68,7 +67,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
       {renderListAnswers()}
       <div className="answers-button-block">
         <div className="margin-top-30">
-          {/*if don't select and click to button choose answer*/}
+          {/* if don't select and click to button choose answer */}
           {renderError()}
           <button type="submit" onClick={handleSubmit}>
             Выбрать
@@ -96,7 +95,7 @@ export default function Answers({ answers, chooseAnswer, hint }) {
   );
 }
 
-Answers.propTypes = {
+SuggestedAnswers.propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
   chooseAnswer: PropTypes.func.isRequired,
   hint: PropTypes.string.isRequired,
