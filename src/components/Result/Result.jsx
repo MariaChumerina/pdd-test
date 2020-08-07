@@ -29,7 +29,7 @@ export default function Result({ tickets, wrongAnswers, startTest }) {
         </button>
       ) : ''}
 
-      { /*when click to show mistakes, render block with question, wrong answer and right answer*/ }
+      {/* when click to show mistakes, render block with question, wrong answer and right answer */}
       {isVisibleMistakes ? <WrongAnswers wrongAnswers={wrongAnswers} tickets={tickets} /> : ''}
     </div>
   );
