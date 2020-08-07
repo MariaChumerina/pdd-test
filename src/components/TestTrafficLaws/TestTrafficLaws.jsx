@@ -6,6 +6,7 @@ import getTickets from '../../utils/getTickets.js';
 import Answers from './Answers.jsx';
 import './TestTrafficLaws.css';
 import Result from '../Result/Result.jsx';
+import getImageSrc from '../../utils/getImage.js';
 
 export default class TestTrafficLaws extends React.Component {
   state = {
@@ -48,9 +49,8 @@ export default class TestTrafficLaws extends React.Component {
 
   getImage = () => {
     const { tickets, indexOfTicket } = this.state;
-    const url = require(`../../TestTrafficLawsData/${tickets[indexOfTicket].image}`);
     return !tickets[indexOfTicket].image.includes('no_image.jpg')
-      ? <img src={url} alt="изображение ситуации" /> : '';
+      ? <img src={getImageSrc(tickets[indexOfTicket].image)} alt="изображение ситуации" /> : '';
   }
 
   startTest = () => {
@@ -70,7 +70,7 @@ export default class TestTrafficLaws extends React.Component {
                 {`${indexOfTicket + 1} `}
               </span>
               <span>
-                 из 20
+                из 20
               </span>
             </p>
             <h2>

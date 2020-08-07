@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Result.css';
 import NoPassTest from './NoPassTest.jsx';
 import PassTest from './PassTest.jsx';
+import getImageSrc from '../../utils/getImage.js';
 
 export default function Result({ tickets, falseAnswers, startTest }) {
   const handleClickStart = useCallback(() => startTest(), [startTest]);
@@ -15,11 +16,8 @@ export default function Result({ tickets, falseAnswers, startTest }) {
   const renderFalseAnswers = () => falseAnswers.map((answer) => {
     const ticket = tickets[answer.ticketNumber];
 
-    const getImage = () => {
-      const url = require(`../../TestTrafficLawsData/${ticket.image}`);
-      return !ticket.image.includes('no_image.jpg')
-        ? <img className="margin-top-15" src={url} alt="изображение ситуации" /> : '';
-    };
+    const getImage = () => (!ticket.image.includes('no_image.jpg')
+      ? <img className="margin-top-15" src={getImageSrc(ticket.image)} alt="изображение ситуации" /> : '');
 
     return (
       <div className="result-answers-block margin-top-30" key={answer.ticketNumber}>
