@@ -16,18 +16,28 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+.title {
+    font-weight: 500;
+}
 .header-link {
     text-decoration: none;
     color: #161B46;
+    line-height: 27px;
+    font-weight: 500;
 }
 .header-link:hover {
     opacity: 0.6;
 }
 @media screen and (max-width: 767px){
-    .title {
-        font-size: 15px;
+    .header {
+        align-items: flex-start;
     }
     .header-link {
         font-size: 15px;
+        line-height: 24px;
+    }
+    .title {
+        font-size: 15px;
+        line-height: 24px;
     }
 }

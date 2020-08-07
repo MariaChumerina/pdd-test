@@ -7,7 +7,7 @@ export default function Header({history}) {
   const renderLink = () => {
     return (
       <Link className="header-link" to='/' >
-        На главную
+        Главная
       </Link>
     );
   }
