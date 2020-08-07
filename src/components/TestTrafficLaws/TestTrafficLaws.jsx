@@ -61,6 +61,8 @@ export default class TestTrafficLaws extends React.Component {
 
   renderTest = () => {
     const { tickets, indexOfTicket, falseAnswers } = this.state;
+    const numberOfQuestion = indexOfTicket + 1;
+
     return (
       indexOfTicket <= 19
         ? (
@@ -68,7 +70,7 @@ export default class TestTrafficLaws extends React.Component {
             {this.getImage()}
             <p>
               <span>
-                {`${indexOfTicket + 1} `}
+                {`${numberOfQuestion} `}
               </span>
               <span>
                 из 20
